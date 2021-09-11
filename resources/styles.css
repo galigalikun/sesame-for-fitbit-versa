@@ -18,3 +18,20 @@
   text-anchor: middle;
   text-length: 99;
 }
+
+.combo-upper-left {
+  x: 5%;
+  y: 5%;
+}
+.combo-upper-right {
+  x: 75%;
+  y: 5%;
+}
+.combo-lower-left {
+  x: 5%;
+  y: 75%;
+}
+.combo-lower-right {
+  x: 75%;
+  y: 75%;
+}

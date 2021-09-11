@@ -1,4 +1,3 @@
-import { display } from "display";
 import document from "document";
 import * as messaging from "messaging";
 
@@ -23,7 +22,6 @@ const enabledAllButton = (isEnabled: boolean): void => {
 statusText.text = "Preparing...";
 statusImg.href = "images/status-prepare.png";
 enabledAllButton(false);
-display.autoOff = false;
 
 btnCheck.onactivate = (): void => {
   statusText.text = "Checking...";
