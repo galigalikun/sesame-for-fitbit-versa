@@ -1,6 +1,6 @@
 {
   "fitbit": {
-    "appUUID": "de85a98f-bf46-480a-9a51-c876d94fdbad",
+    "appUUID": "24e61375-6ef9-47c1-a24f-27a42cbcc0b1",
     "appType": "app",
     "appDisplayName": "sesame-app",
     "iconFile": "resources/icon.png",
@@ -9,23 +9,25 @@
       "access_internet"
     ],
     "buildTargets": [
-      "meson",
-      "gemini"
+      "atlas"
     ],
     "i18n": {
       "en": {
         "name": "sesame-app"
+      },
+      "ja-JP": {
+        "name": "セサミ"
       }
     },
     "defaultLanguage": "en-US"
   },
   "devDependencies": {
-    "@fitbit/sdk": "^4.0.1",
-    "@fitbit/sdk-cli": "^1.7.1",
-    "@typescript-eslint/eslint-plugin": "^2.11.0",
-    "@typescript-eslint/parser": "^2.11.0",
-    "eslint": "^6.2.2",
-    "fitbit-sdk-types": "^4.2.2"
+    "@fitbit/sdk": "^6.0.2",
+    "@fitbit/sdk-cli": "^1.7.3",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "fitbit-sdk-types": "^7.0.0"
   },
   "scripts": {
     "build": "fitbit-build",

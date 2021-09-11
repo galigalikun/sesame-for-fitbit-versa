@@ -1,5 +1,5 @@
-import * as messaging from 'messaging';
-import * as sesame from './sesame';
+import * as messaging from "messaging";
+import * as sesame from "./sesame";
 
 const WAIT_RESPONSE_SEC = 5;
 
@@ -8,7 +8,7 @@ const sendMessageToDevice = (message): void => {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     messaging.peerSocket.send(message);
   } else {
-    console.log('Error: Connection is not open');
+    console.log("Error: Connection is not open");
   }
 };
 
@@ -18,20 +18,27 @@ messaging.peerSocket.onmessage = (evt): void => {
     return;
   }
   const command = evt.data.command;
-  if (command === 'prepare' || command === 'status') {
-    sesame.fetchSesameStatusWithWait(WAIT_RESPONSE_SEC).then((resp) => {
-      sendMessageToDevice(resp);
-    }).catch((err) => {
-      console.log(`Fetch status error: ${err}`);
-    });
-  } else if (command === 'unlock' || command === 'lock') {
-    sesame.postControlSesame(command).then(() => {
-      return sesame.fetchSesameStatusWithWait(WAIT_RESPONSE_SEC);
-    }).then((resp) => {
-      sendMessageToDevice(resp);
-    }).catch((err) => {
-      console.log(`Control sesame err: ${err}`);
-    });;
+  if (command === "prepare" || command === "status") {
+    sesame
+      .fetchSesameStatusWithWait(WAIT_RESPONSE_SEC)
+      .then((resp) => {
+        sendMessageToDevice(resp);
+      })
+      .catch((err) => {
+        console.log(`Fetch status error: ${err}`);
+      });
+  } else if (command === "unlock" || command === "lock") {
+    sesame
+      .postControlSesame(command)
+      .then(() => {
+        return sesame.fetchSesameStatusWithWait(WAIT_RESPONSE_SEC);
+      })
+      .then((resp) => {
+        sendMessageToDevice(resp);
+      })
+      .catch((err) => {
+        console.log(`Control sesame err: ${err}`);
+      });
   }
 };
 
