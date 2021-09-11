@@ -4,15 +4,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Set Node.js 12.x
-      uses: actions/setup-node@master
-      with:
-        node-version: 12.x
-    - name: npm install, build, and lint
-      run: |
-        npm ci
-        npm run lint
-        npm run build
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Set Node.js 14.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 14.x
+      - name: yarn install, build, and lint
+        run: |
+          yarn install --frozen-lockfile
+          yarn lint
+          yarn build
+        env:
+          CI: true
